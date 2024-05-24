@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { ConfirmationOrdersComponent } from './confirmation-orders/confirmation-orders.component';
+import { DeliveryOrdersComponent } from './delivery-orders/delivery-orders.component';
+import { HistoryOrderComponent } from './history-order/history-order.component';
 
 
 
@@ -16,6 +19,9 @@ const _router: Routes = [
     children: [
       { path: '', component: ProductsComponent },
       { path: 'add', component: AddProductComponent },
+      { path: 'confirmation', component: ConfirmationOrdersComponent },
+      { path: 'delivery', component: DeliveryOrdersComponent },
+      { path: 'history', component: HistoryOrderComponent },
     ]
   }
 ]
@@ -24,7 +30,10 @@ const _router: Routes = [
   declarations: [
     ProductsComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    ConfirmationOrdersComponent,
+    DeliveryOrdersComponent,
+    HistoryOrderComponent
   ],
   imports: [
     CommonModule, 
