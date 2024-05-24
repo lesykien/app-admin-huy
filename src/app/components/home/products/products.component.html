@@ -61,7 +61,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="isPopup = true"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body mb-4">
                 <app-add-product *ngIf="isPopup == true"></app-add-product>
                 <app-edit-product *ngIf="isPopup == false"></app-edit-product>
             </div>
