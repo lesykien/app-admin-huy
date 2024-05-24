@@ -21,10 +21,12 @@ const _router: Routes = [
     path: 'home', component: HomeComponent,
     children: [
       { path: '', component: ProductsComponent },
-      { path: 'add', component: AddProductComponent },
       { path: 'confirmation', component: ConfirmationOrdersComponent },
       { path: 'delivery', component: DeliveryOrdersComponent },
       { path: 'history', component: HistoryOrderComponent },
+      { path: 'category', component: CategorysComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'account-admin', component: AccountAdminComponent },
     ]
   }
 ]

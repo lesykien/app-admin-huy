@@ -1,1 +1,58 @@
-<p>account-admin works!</p>
+<div class="p-5">
+    <div class="card">
+        <div class="card-header">
+            Thông tin tài khoản
+        </div>
+        <div class="card-body">
+            <form [formGroup]="Inforamtion">
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="formFileMultiple" class="form-label">
+                            Họ tên
+                        </label>
+                        <input type="text" class="form-control" placeholder="Tên sản phẩm" formControlName="fullname">
+                        <p class="text-danger m-0" *ngIf="Inforamtion.get('fullname')?.errors?.['required']">Bạn chưa nhập
+                            họ tên</p>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="formFileMultiple" class="form-label">
+                            Email
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Đơn giá" formControlName="email">
+                        </div>
+                        <p class="text-danger m-0" *ngIf="Inforamtion.get('email')?.errors?.['required']">Bạn chưa nhập
+                            email
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="formFileMultiple" class="form-label">
+                            User name
+                        </label>
+                        <input type="text" class="form-control" placeholder="Tên sản phẩm" formControlName="username">
+                        <p class="text-danger m-0" *ngIf="Inforamtion.get('username')?.errors?.['required']">Bạn chưa nhập
+                            user name</p>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="formFileMultiple" class="form-label">
+                            Số điện thoại
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Đơn giá" formControlName="phone">
+                        </div>
+                        <p class="text-danger m-0" *ngIf="Inforamtion.get('phone')?.errors?.['required']">Bạn chưa nhập
+                            số điện thoại
+                        </p>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary mt-3"
+                [disabled]="Inforamtion.invalid"
+                (click)="SumbitForm()"
+                >Lưu thay đổi</button>
+            </form>
+        </div>
+    </div>
+</div>

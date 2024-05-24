@@ -1,1 +1,45 @@
-<p>users works!</p>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Quản lý khách hàng</h1>
+    <div class="card my-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Danh sách khách hàng
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ tên</th>
+                        <th>số điện thoại</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Email</th>
+                        <th>Ngày tháng</th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lê Văn A</td>
+                        <td>0987655321</td>
+                        <td>Edinburgh</td>
+                        <td> {{'lea@gmail.com'}} </td>
+                        <td>2011/04/25</td>
+                        <td>
+                            <div class="">
+                                <button class="btn btn-sm btn-outline-danger"
+                                (click)="RemoveUser(1)"
+                                >
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
