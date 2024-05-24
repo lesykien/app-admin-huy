@@ -15,9 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent
   ],
   imports: [
+    HomeModule, 
     BrowserModule,
     AppRoutingModule, 
-    HomeModule, 
     FormsModule,
     ReactiveFormsModule,
   ],

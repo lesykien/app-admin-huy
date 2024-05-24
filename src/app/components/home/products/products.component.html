@@ -1,1 +1,71 @@
-<p>products works!</p>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Quản lý sản phẩm</h1>
+    <div class="card my-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Danh sách sản phẩm
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Hình ảnh</th>
+                        <th>Tên</th>
+                        <th>Đơn giá</th>
+                        <th>Ngày tháng</th>
+                        <th>
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                (click)="isPopup = true" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="image">
+                                <img src="https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                    alt="">
+                            </div>
+                        </td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>
+                            <div class="">
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="isPopup = false"
+                                    class="btn btn-sm btn-warning">
+                                    <i class="fa-solid fa-pen-to-square text-light"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="margin: 6rem auto; max-width: 80rem;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    {{ isPopup ? 'Thêm sản phẩm' : 'Cập nhật sản phẩm'}}   
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="isPopup = true"></button>
+            </div>
+            <div class="modal-body">
+                <app-add-product *ngIf="isPopup == true"></app-add-product>
+                <app-edit-product *ngIf="isPopup == false"></app-edit-product>
+            </div>
+            
+        </div>
+    </div>
+</div>

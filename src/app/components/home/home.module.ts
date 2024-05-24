@@ -5,6 +5,8 @@ import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -12,14 +14,17 @@ const _router: Routes = [
   { 
     path: 'home', component: HomeComponent,
     children: [
-      { path: 'product', component: ProductsComponent },
+      { path: '', component: ProductsComponent },
+      { path: 'add', component: AddProductComponent },
     ]
   }
 ]
 
 @NgModule({
   declarations: [
-    ProductsComponent
+    ProductsComponent,
+    AddProductComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule, 
