@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CategorysService } from '../../../services/categorys.service';
 
 @Component({
   selector: 'app-categorys',
@@ -7,27 +8,40 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './categorys.component.scss',
 })
 export class CategorysComponent implements OnInit {
-  constructor(private form: FormBuilder) {}
+  constructor(private form: FormBuilder, private _category: CategorysService) {}
   CategoryForm = this.form.group({
     name: ['', Validators.required],
   });
   isPopup: boolean = true;
-  ngOnInit(): void {}
+
+  // khai báo list trên này để đẩy ra fe
+  listCategry : any[] = [];
+  ngOnInit(): void {
+    this.LoadingForm();
+  }
 
   SumbitForm() {
     let category: any = this.CategoryForm.value;
     console.log(category);
   }
 
-  OpenFormUpadte() {
+  OpenFormUpadte( list: any[] , id : number ) {
     this.isPopup = false;
-    // this.CategoryForm.get('name')!.setValue( --truyền dữ liều vào đây--- );
-    this.CategoryForm.get('name')!.setValue("adadad");
+    let item : any = list.find(a => a.id == id);
+    this.CategoryForm.get('name')!.setValue(item.name);
   }
 
-  ClosePopup(){
+  LoadingForm() {
+    this._category.getAllData().subscribe((response) => {
+      // gắn giá trị lại cho list
+      this.listCategry = response;
+      console.log(response);
+    });
+  }
+
+  ClosePopup() {
     this.isPopup = true;
-    this.CategoryForm.get('name')!.setValue("");
+    this.CategoryForm.get('name')!.setValue('');
   }
 
   UpdateCategory() {

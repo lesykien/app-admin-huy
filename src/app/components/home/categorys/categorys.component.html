@@ -21,13 +21,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>61</td>
-                        <td>Edinburgh</td>
+                    <tr *ngFor="let item of listCategry; let i = index">
+                        <td> {{i + 1}} </td>
+                        <td> {{item.id}} </td>
+                        <td> {{item.name}} </td>
                         <td>
                             <div class="">
-                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="OpenFormUpadte()"
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="OpenFormUpadte(listCategry , item.id)"
                                     class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square text-light"></i>
                                 </button>
