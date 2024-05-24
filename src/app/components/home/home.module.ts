@@ -10,6 +10,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { ConfirmationOrdersComponent } from './confirmation-orders/confirmation-orders.component';
 import { DeliveryOrdersComponent } from './delivery-orders/delivery-orders.component';
 import { HistoryOrderComponent } from './history-order/history-order.component';
+import { CategorysComponent } from './categorys/categorys.component';
+import { UsersComponent } from './users/users.component';
+import { AccountAdminComponent } from './account-admin/account-admin.component';
 
 
 
@@ -33,7 +36,10 @@ const _router: Routes = [
     EditProductComponent,
     ConfirmationOrdersComponent,
     DeliveryOrdersComponent,
-    HistoryOrderComponent
+    HistoryOrderComponent,
+    CategorysComponent,
+    UsersComponent,
+    AccountAdminComponent
   ],
   imports: [
     CommonModule, 
