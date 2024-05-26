@@ -5,9 +5,7 @@
                 Tên sản phẩm
             </label>
             <input type="text" class="form-control" placeholder="Tên sản phẩm" formControlName="name">
-            <p class="text-danger m-0"
-            *ngIf="productForm.get('name')?.errors?.['required']"
-            >Bạn chưa nhập tên</p>
+            <p class="text-danger m-0" *ngIf="productForm.get('name')?.errors?.['required']">Bạn chưa nhập tên</p>
         </div>
         <div class="mb-3 col-6">
             <label for="formFileMultiple" class="form-label">
@@ -17,18 +15,55 @@
                 <input type="text" class="form-control" placeholder="Đơn giá" formControlName="price">
                 <span class="input-group-text" id="basic-addon2">.000VNĐ</span>
             </div>
-            <p class="text-danger m-0"
-            *ngIf="productForm.get('price')?.errors?.['required']"
-            >Bạn chưa nhập đơn giá</p>
+            <p class="text-danger m-0" *ngIf="productForm.get('price')?.errors?.['required']">Bạn chưa nhập đơn giá</p>
         </div>
     </div>
-
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label for="formFileMultiple" class="form-label">
+                Số lượng
+            </label>
+            <input type="text" class="form-control" placeholder="Số lượng sản phẩm" formControlName="quantity">
+            <p class="text-danger m-0" *ngIf="productForm.get('quantity')?.errors?.['required']">Bạn chưa nhập số lượng
+            </p>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="formFileMultiple" class="form-label">
+                Màu sắc
+            </label>
+            <input type="text" class="form-control" placeholder="Màu sắc" formControlName="color">
+            <p class="text-danger m-0" *ngIf="productForm.get('color')?.errors?.['required']">Bạn chưa nhập màu sắc</p>
+        </div>
+    </div>
     <div class="row">
         <div class="mb-3 col-6">
             <label for="formFileMultiple" class="form-label">
                 Loại sản phẩm
             </label>
             <select class="form-select" id="inputGroupSelect02" formControlName="category">
+                <option selected>Chọn giới tính</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+            </select>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="formFileMultiple" class="form-label">
+                Tình trạng rụng lông
+            </label>
+            <select class="form-select" id="inputGroupSelect02" formControlName="hair_loss">
+                <option selected>Chọn loại sản phẩm</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label for="formFileMultiple" class="form-label">
+                Độ phổ biến
+            </label>
+            <select class="form-select" id="inputGroupSelect02" formControlName="popularity">
                 <option selected>Chọn loại sản phẩm</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -39,21 +74,45 @@
             <label for="formFileMultiple" class="form-label">
                 Kích thước
             </label>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Kích thước" formControlName="size">
-            </div>
+            <select class="form-select" id="inputGroupSelect02" formControlName="size">
+                <option selected>Chọn loại sản phẩm</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
         </div>
     </div>
-
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label for="formFileMultiple" class="form-label">
+                Giới tính
+            </label>
+            <select class="form-select" id="inputGroupSelect02" formControlName="sex">
+                <option selected>Chọn giới tính</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+            </select>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="formFileMultiple" class="form-label">
+                Kiểu lông
+            </label>
+            <select class="form-select" id="inputGroupSelect02" formControlName="style_hair">
+                <option selected>Chọn loại sản phẩm</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div>
     <!-- hình ảnh  -->
     <div class="row">
         <div class="col-6">
             <div class="row">
                 <div class="mb-3 col-12">
                     <label for="formFileMultiple" class="form-label">Hình ảnh</label>
-                    <input class="form-control" type="file" id="formFileMultiple" multiple=""
-                    formControlName="file"
-                    (change)="onFilesSelected($event)">
+                    <input class="form-control" type="file" id="formFileMultiple" multiple="" formControlName="file"
+                        (change)="onFilesSelected($event)">
                 </div>
             </div>
             <div class="row">
@@ -66,15 +125,14 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12">
-                    <button class="btn btn-primary" style="width: 100%;" (click)="SumbitForm()" [disabled]="productForm.invalid">Thêm sản phẩm</button>
+                    <button class="btn btn-primary" style="width: 100%;" (click)="SumbitForm()"
+                        [disabled]="productForm.invalid">Thêm sản phẩm</button>
                 </div>
             </div>
         </div>
         <div class="col-6 px-4">
             <div class="row">
-                <div class="col-12" style="background-color: aqua; height: 100%; width: 100%;">
 
-                </div>
             </div>
         </div>
     </div>

@@ -14,7 +14,12 @@ export class AddProductComponent implements OnInit {
     size: ['', Validators.required],
     descrition: [''],
     category: ['', Validators.required],
-    // file này chỉ dùng để kiểm lỗi cho form
+    color: ['', Validators.required],
+    hair_loss: ['', Validators.required],
+    popularity: ['', Validators.required],
+    sex: ['', Validators.required],
+    style_hair: ['', Validators.required],
+    quantity: ['', Validators.required],
     file: ['', Validators.required],
   });
 

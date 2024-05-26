@@ -14,6 +14,7 @@ import { CategorysComponent } from './categorys/categorys.component';
 import { UsersComponent } from './users/users.component';
 import { AccountAdminComponent } from './account-admin/account-admin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BlogsComponent } from './blogs/blogs.component';
 
 
 
@@ -28,6 +29,7 @@ const _router: Routes = [
       { path: 'category', component: CategorysComponent },
       { path: 'users', component: UsersComponent },
       { path: 'account-admin', component: AccountAdminComponent },
+      { path: 'blogs', component: BlogsComponent },
     ]
   }
 ]
@@ -42,7 +44,8 @@ const _router: Routes = [
     HistoryOrderComponent,
     CategorysComponent,
     UsersComponent,
-    AccountAdminComponent
+    AccountAdminComponent,
+    BlogsComponent
   ],
   imports: [
     CommonModule, 

@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
-  styleUrl: './edit-product.component.scss'
+  styleUrl: './edit-product.component.scss',
 })
 export class EditProductComponent implements OnInit {
   constructor(private form: FormBuilder) {}
@@ -14,7 +14,12 @@ export class EditProductComponent implements OnInit {
     size: ['', Validators.required],
     descrition: [''],
     category: ['', Validators.required],
-    // file này chỉ dùng để kiểm lỗi cho form
+    color: ['', Validators.required],
+    hair_loss: ['', Validators.required],
+    popularity: ['', Validators.required],
+    sex: ['', Validators.required],
+    style_hair: ['', Validators.required],
+    quantity: ['', Validators.required],
     file: ['', Validators.required],
   });
 
@@ -45,7 +50,7 @@ export class EditProductComponent implements OnInit {
   }
 
   // lấy dữ liều từ api ra form
-  RenderForm(response : any){
+  RenderForm(response: any) {
     // this.productForm.get('name')!.setValue( --truyền dữ liều vào đây--- );
   }
 }
