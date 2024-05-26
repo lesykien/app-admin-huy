@@ -1,5 +1,21 @@
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Quản lý sản phẩm</h1>
+    <div class="row align-items-center">
+        <div class="col-3 mt-4 ">
+            <h1 class="mb-0">Quản lý sản phẩm</h1>
+        </div>
+        <div class="col-3 mt-4">
+            <div class="btn-group">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    (click)="isDropdown = !isDropdown" aria-expanded="false">
+                    Loại sản phẩm
+                </button>
+                <ul class="dropdown-menu active--dropdown" [class.show]="isDropdown">
+                    <li><a class="dropdown-item" href="#">Chó</a></li>
+                    <li><a class="dropdown-item" href="#">Mèo</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="card my-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>

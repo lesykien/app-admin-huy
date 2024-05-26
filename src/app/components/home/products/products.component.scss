@@ -1,11 +1,17 @@
-.image{
+.image {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    & img{
+    & img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
+}
+.active--dropdown {
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate(0px, 50px);
 }

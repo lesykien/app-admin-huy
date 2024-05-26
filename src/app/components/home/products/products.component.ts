@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  isPopup: boolean = true;  
+  isPopup: boolean = true;
+  isDropdown: boolean = false;
   ngOnInit(): void {}
 }
