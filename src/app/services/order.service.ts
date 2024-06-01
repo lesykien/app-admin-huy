@@ -20,9 +20,16 @@ export class OrderService {
     return this.http.get<any>(`${_shared.api}api/Account/${id}`);
   }
 
-  getById(id: number): Observable<order[]> {
-    return this.http.get<order[]>(
+  getById(id: number): Observable<order> {
+    return this.http.get<order>(
       `${_shared.api}api/OrdersControllers/get-order-by-id/${id}`
+    );
+  }
+
+  update(id: number, status: number) {
+    return this.http.put<string>(
+      `${_shared.api}api/OrdersControllers/update-status-orders/${status}/id/${id}`,
+      ''
     );
   }
 }

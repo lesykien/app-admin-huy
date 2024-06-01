@@ -8,6 +8,7 @@ import {
   user,
 } from '../../../model/order.model';
 import { response } from 'express';
+import { log } from 'console';
 @Component({
   selector: 'app-confirmation-orders',
   templateUrl: './confirmation-orders.component.html',
@@ -49,17 +50,29 @@ export class ConfirmationOrdersComponent implements OnInit {
   }
 
   ConfirmationOrder(id: number) {
-    alert('Xác nhận đơn hàng thành công' + id);
+    this._order.getById(id).subscribe((response) => {
+      this.Update(id, response.statusDelivery);
+    });
+  }
+
+  Update(id: number, status: number) {
+    this._order.update(id, status).subscribe((response) => {});
+    alert('Duyệt đơn thành công');
+    window.location.reload();
   }
 
   CancelOrder(id: number) {
-    alert('Hủy đơn hàng thành công');
+    let isCheck = confirm('Bạn có muốn hủy đơn hàng này không');
+    if (isCheck) {
+      this._order.update(id, 3).subscribe((response) => {});
+      alert('Hủy đơn hàng thành công');
+      window.location.reload();
+    }
   }
 
   GetById(id: number) {
     this._order.getById(id).subscribe((response) => {
-      this.order = response[0];
-      console.log(this.order);
+      this.order = response;
       this.GetUserById(this.order.accountId);
     });
   }

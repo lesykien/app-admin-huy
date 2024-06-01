@@ -21,18 +21,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lê Văn A</td>
-                        <td>0987654321</td>
-                        <td>30.000.000đ</td>
-                        <td>2011/04/25</td>
+                    <tr *ngFor="let item of orders; let i = index">
+                        <td> {{i + 1}} </td>
+                        <td> {{item.fullName}} </td>
+                        <td> {{item.phone}} </td>
+                        <td> {{item.amount | currency:'
+                            ':'symbol':'1.0-0'}}đ</td>
+                        <td> {{item.date}} </td>
                         <td>
-                            Đơn hàng giao thành công
+                            <a class="btn btn-primary btn-sm text-capitalize pointer-event"
+                                *ngIf="item.statusDelivery == 3"> giao thành công</a>
+                            <a class="btn btn-danger btn-sm text-capitalize pointer-event"
+                                *ngIf="item.statusDelivery == 4">
+                                Đơn bị hủy
+                            </a>
                         </td>
                         <td>
                             <div class="d-flex align-items-center gap-3">
-                                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                <button data-bs-toggle="modal" (click)="GetById(item.id)" data-bs-target="#exampleModal"
                                     class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-list-ul"></i>
                                 </button>
@@ -52,7 +58,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Chi tiết đơn hàng
+                    Chi tiết đơn hàng
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -63,23 +69,27 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Đơn giá</th>
                                 <th>Tổng tiền</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
+                            <tr *ngFor="let item of order.detal; let i = index">
+                                <td> {{i + 1}} </td>
                                 <td>
                                     <div class="image">
-                                        <img src="https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                        <img src="https://localhost:7192/api/GetImageControllers/get-images-avatar/{{item.link}}"
                                             alt="">
                                     </div>
                                 </td>
-                                <td>1</td>
-                                <td>30.000.000đ</td>
-                                <td>30.000.000đ</td>
+                                <td> {{item.name}} </td>
+                                <td> {{item.quantity}} </td>
+                                <td>{{item.price| currency:'
+                                    ':'symbol':'1.0-0'}}đ</td>
+                                <td>{{item.price * item.quantity| currency:'
+                                    ':'symbol':'1.0-0'}}đ</td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,13 +97,13 @@
                     <div class="card" style="width: 100%;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                Họ tên: Lê Văn A
+                                Họ tên: {{user.fullName}}
                             </li>
                             <li class="list-group-item">
-                                Địa chỉ: Hà huy Tập
+                                Địa chỉ: {{user.address}}
                             </li>
                             <li class="list-group-item">
-                                Số điện thoại: 098765432
+                                Số điện thoại: {{user.phoneNumber}}
                             </li>
                         </ul>
                     </div>
