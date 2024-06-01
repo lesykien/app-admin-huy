@@ -20,19 +20,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lê Văn A</td>
-                        <td>0987654321</td>
-                        <td>30.000.000đ</td>
-                        <td>2011/04/25</td>
+                    <tr *ngFor="let item of orders; let i = index">
+                        <td> {{i + 1}} </td>
+                        <td> {{item.fullName}} </td>
+                        <td> {{item.phone}} </td>
+                        <td> {{item.amount | currency:'
+                            ':'symbol':'1.0-0'}}đ </td>
+                        <td> {{item.date.toString()}} </td>
                         <td>
                             <div class="d-flex align-items-center gap-3">
                                 <button data-bs-toggle="modal" data-bs-target="#exampleModal"
                                     class="btn btn-sm btn-outline-danger">
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
-                                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                <button data-bs-toggle="modal" (click)="GetById(item.id)" data-bs-target="#exampleModal"
                                     class="btn btn-sm btn-dark">
                                     <i class="fa-solid fa-list-ul"></i>
                                 </button>
@@ -65,21 +66,23 @@
                         <tr>
                             <th>STT</th>
                             <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Đơn giá</th>
                             <th>Tổng tiền</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
+                        <tr *ngFor="let item of order.detal; let i = index">
+                            <td> {{i + 1}} </td>
                             <td>
                                 <div class="image">
-                                    <img src="https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                    <img src="https://localhost:7192/api/GetImageControllers/get-images-avatar/{{item.link}}"
                                         alt="">
                                 </div>
                             </td>
-                            <td>1</td>
+                            <td> {{item.name}} </td>
+                            <td> {{item.quantity}} </td>
                             <td>30.000.000đ</td>
                             <td>30.000.000đ</td>
                         </tr>
@@ -89,30 +92,27 @@
                 <div class="card" style="width: 100%;">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            Họ tên: Lê Văn A
+                            Họ tên: {{user.fullName}}
                         </li>
                         <li class="list-group-item">
-                            Địa chỉ: Hà huy Tập
+                            Địa chỉ: {{user.address}}
                         </li>
                         <li class="list-group-item">
-                            Số điện thoại: 098765432
+                            Số điện thoại: {{user.phoneNumber}}
                         </li>
                     </ul>
                 </div>
 
                 <div class="mt-3">
-                    <h4>Tổng tiền: 230.000đ</h4>
+                    <h4>Tổng tiền: {{order.total | currency:'
+                        ':'symbol':'1.0-0'}}đ</h4>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                (click)="CancelOrder(1)"
-                >
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="CancelOrder(1)">
                     Hủy đơn hàng
                 </button>
-                <button type="button" class="btn btn-primary"
-                (click)="ConfirmationOrder(1)" 
-                >
+                <button type="button" class="btn btn-primary" (click)="ConfirmationOrder(1)">
                     Xác nhận đơn hàng
                 </button>
             </div>
