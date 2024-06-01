@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { _productsModel, productsForm } from '../../../model/products.model';
+import { CategorysService } from '../../../services/categorys.service';
+import { categoryDTOs } from '../../../model/category.model';
+import { ProductsService } from '../../../services/products.service';
 
 @Component({
   selector: 'app-add-product',
@@ -7,7 +11,12 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './add-product.component.scss',
 })
 export class AddProductComponent implements OnInit {
-  constructor(private form: FormBuilder) {}
+  constructor(
+    private form: FormBuilder,
+    private _category: CategorysService,
+    private _products: ProductsService
+  ) {}
+
   productForm = this.form.group({
     name: ['', Validators.required],
     price: ['', Validators.required],
@@ -24,15 +33,21 @@ export class AddProductComponent implements OnInit {
   });
 
   Files: File[] = [];
+  options: categoryDTOs[] = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.LoadOptions();
+  }
 
   SumbitForm() {
-    let valueForm: any = this.productForm.value;
-    // thông tin sản phẩm để gửi về serve
-    console.log(valueForm);
-    // thông tin hình ảnh để gửi về serve
-    console.log(this.Files);
+    let valueForm: productsForm = this.productForm.value as productsForm;
+    let form = _productsModel.FormRequest(valueForm, this.Files);
+    this._products.create(form).subscribe((response) => {
+      if (response) {
+        alert('Thêm sản phẩm thành công');
+        window.location.reload();
+      }
+    });
   }
 
   // lấy thông tin hình ảnh
@@ -47,5 +62,11 @@ export class AddProductComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  LoadOptions() {
+    this._category.getAllData().subscribe((response) => {
+      this.options = response;
+    });
   }
 }

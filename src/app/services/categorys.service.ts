@@ -11,7 +11,7 @@ export class CategorysService {
 
   getAllData(): Observable<any> {
     return this.http.get<any>(
-      `${_shared.api}/api/Category/get-category`
+      `${_shared.api}api/CategoryControllers`
     );
   }
 }
