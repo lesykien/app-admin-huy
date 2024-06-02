@@ -13,21 +13,27 @@ export class CategorysComponent implements OnInit {
     name: ['', Validators.required],
   });
   isPopup: boolean = true;
+  id: number = 0;
 
   // khai báo list trên này để đẩy ra fe
-  listCategry : any[] = [];
+  listCategry: any[] = [];
   ngOnInit(): void {
     this.LoadingForm();
   }
 
   SumbitForm() {
     let category: any = this.CategoryForm.value;
-    console.log(category);
+    let form: FormData = new FormData();
+    form.append('name', category.name);
+    this._category.create(form).subscribe((response) => {});
+    alert('Thêm loại sản phẩm thành công');
+    window.location.reload();
   }
 
-  OpenFormUpadte( list: any[] , id : number ) {
+  OpenFormUpadte(list: any[], id: number) {
     this.isPopup = false;
-    let item : any = list.find(a => a.id == id);
+    let item: any = list.find((a) => a.id == id);
+    this.id = id;
     this.CategoryForm.get('name')!.setValue(item.name);
   }
 
@@ -44,8 +50,12 @@ export class CategorysComponent implements OnInit {
     this.CategoryForm.get('name')!.setValue('');
   }
 
-  UpdateCategory() {
+  UpdateCategory(id: number) {
     let category: any = this.CategoryForm.value;
-    console.log(category);
+    let form: FormData = new FormData();
+    form.append('newName', category.name);
+    this._category.update(id, form).subscribe((response) => {});
+    alert('Cập nhật lại sản phẩm thành công');
+    window.location.reload();
   }
 }

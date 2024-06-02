@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { _shared } from '../Shared/shared';
 
 @Injectable({
@@ -10,8 +10,16 @@ export class CategorysService {
   constructor(private http: HttpClient) {}
 
   getAllData(): Observable<any> {
-    return this.http.get<any>(
-      `${_shared.api}api/CategoryControllers`
+    return this.http.get<any>(`${_shared.api}api/CategoryControllers`);
+  }
+
+  create(form: FormData) {
+    return this.http.post<any>(`${_shared.api}api/CategoryControllers`, form);
+  }
+  update(id: number, form: FormData) {
+    return this.http.put<any>(
+      `${_shared.api}api/CategoryControllers/Update/${id}`,
+      form
     );
   }
 }

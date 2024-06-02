@@ -67,7 +67,7 @@
                             danh mục</button>
                     </div>
                     <div *ngIf="isPopup == false" class="d-flex justify-content-end">
-                        <button class="btn btn-primary" [disabled]="CategoryForm.invalid" (click)="UpdateCategory()">Lưu
+                        <button class="btn btn-primary" [disabled]="CategoryForm.invalid" (click)="UpdateCategory(id)">Lưu
                             thay đổi</button>
                     </div>
                 </form>

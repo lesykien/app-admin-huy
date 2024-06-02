@@ -7,11 +7,20 @@
             <div class="btn-group">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     (click)="isDropdown = !isDropdown" aria-expanded="false">
-                    Loại sản phẩm
+                    {{isLabel}}
                 </button>
                 <ul class="dropdown-menu active--dropdown" [class.show]="isDropdown">
-                    <li><a class="dropdown-item" href="#">Chó</a></li>
-                    <li><a class="dropdown-item" href="#">Mèo</a></li>
+                    <li>
+                        <a class="dropdown-item" type="button" (click)="LoadData(0); isDropdown = false">
+                            Tất cả
+                        </a>
+                    </li>
+                    <li *ngFor="let item of categoris">
+                        <a class="dropdown-item" type="button"
+                            (click)="LoadData(item.id, item.name); isDropdown = false">
+                            {{item.name}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -54,8 +63,8 @@
                         </td>
                         <td>
                             <div class="">
-                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="isPopup = false; OpenEdit(item.id)"
-                                    class="btn btn-sm btn-warning">
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    (click)="isPopup = false; OpenEdit(item.id)" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square text-light"></i>
                                 </button>
                             </div>
