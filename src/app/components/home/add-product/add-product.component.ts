@@ -42,9 +42,14 @@ export class AddProductComponent implements OnInit {
   SumbitForm() {
     let valueForm: productsForm = this.productForm.value as productsForm;
     let form = _productsModel.FormRequest(valueForm, this.Files);
-    this._products.create(form).subscribe((response) => {});
-    alert('Thêm sản phẩm thành công');
-    window.location.reload();
+    this._products.create(form).subscribe((response) => {
+      if (response.code == 200) {
+        alert('Thêm sản phẩm thành công');
+        window.location.reload();
+        return;
+      }
+      alert('Thêm sản phẩm thất bại');
+    });
   }
 
   // lấy thông tin hình ảnh

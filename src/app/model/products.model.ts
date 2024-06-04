@@ -5,7 +5,7 @@ interface products {
   description: string;
   hair: string;
   id: number;
-  link: images[] | undefined;
+  link: images[];
   length: number;
   name: string;
   popular: string;

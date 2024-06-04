@@ -53,9 +53,14 @@ export class EditProductComponent implements OnInit {
     let valueForm: any = this.productForm.value;
     let form = _productsModel.FormRequest(valueForm, this.Files);
     let id: number = Number(sessionStorage.getItem('id'));
-    this._product.update(id, form).subscribe((response) => {});
-    alert('Cập nhật sản phẩm thành công');
-    window.location.reload();
+    this._product.update(id, form).subscribe((response) => {
+      if (response.code == 200) {
+        alert('Cập nhật sản phẩm thành công');
+        window.location.reload();
+        return;
+      }
+      alert('Cập nhật sản phẩm thất bại');
+    });
   }
 
   // lấy thông tin hình ảnh
