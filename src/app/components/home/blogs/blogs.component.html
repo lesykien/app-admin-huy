@@ -34,7 +34,7 @@
                         <td>
                             <div class="">
                                 <button data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                    (click)="isPopup = false; Update(item)" class="btn btn-sm btn-warning">
+                                    (click)="isPopup = false; Edit(item)" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square text-light"></i>
                                 </button>
                             </div>
@@ -84,7 +84,7 @@
                                 viết</button>
                         </div>
                         <div class="mb-3 col-6" *ngIf="!isPopup">
-                            <button class="btn btn-primary" [disabled]="FormBlog.invalid">
+                            <button class="btn btn-primary" (click)="Update(id)" [disabled]="FormBlog.invalid">
                                 Cập nhật bài viết
                             </button>
                         </div>

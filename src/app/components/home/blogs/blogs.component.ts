@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { title } from 'process';
 import { BlogService } from '../../../services/blog.service';
 import { blogDTOs } from '../../../model/blogs.model';
+import { log } from 'console';
 
 @Component({
   selector: 'app-blogs',
@@ -14,12 +15,13 @@ export class BlogsComponent implements OnInit {
 
   FormBlog = this.form.group({
     title: ['', Validators.required],
-    image: ['', Validators.required],
+    image: [''],
     content: ['', Validators.required],
   });
   isPopup: boolean = true;
   Files: File | undefined;
   listBlogs: blogDTOs[] = [];
+  id: number = 0;
   ngOnInit(): void {
     this.LoadPage();
   }
@@ -54,10 +56,26 @@ export class BlogsComponent implements OnInit {
     this.Files = files[0];
   }
 
-  Update(item: blogDTOs) {
+  Edit(item: blogDTOs) {
     this.FormBlog.get('title')!.setValue(item.headline);
     this.FormBlog.get('content')!.setValue(item.content);
-    this.FormBlog.get('image')!.setValue(item.image);
+    this.id = item.id;
+  }
+
+  Update(id: number) {
+    let value = this.FormBlog.value;
+    let form = new FormData();
+    form.append('healine', value.title as string);
+    form.append('content', value.content as string);
+    form.append('img', this.Files as File);
+    this.blogs.update(form, id).subscribe((response) => {
+      if (response.code == 200) {
+        alert('Cập nhật bài viết thành công');
+        window.location.reload();
+        return;
+      }
+      alert('Cập nhật bài viết thất bại');
+    });
   }
 
   AddBlog() {

@@ -21,4 +21,11 @@ export class BlogService {
   getData(): Observable<blogDTOs[]> {
     return this.http.get<blogDTOs[]>(`${_shared.api}api/Blog/get-all`);
   }
+
+  update(form: FormData, id: number) {
+    return this.http.put<SingleResponse>(
+      `${_shared.api}api/Blog/update-blog/${id}`,
+      form
+    );
+  }
 }
