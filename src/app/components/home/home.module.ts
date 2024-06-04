@@ -15,6 +15,7 @@ import { UsersComponent } from './users/users.component';
 import { AccountAdminComponent } from './account-admin/account-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BlogsComponent } from './blogs/blogs.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 
@@ -54,6 +55,7 @@ const _router: Routes = [
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule, 
+    EditorModule,
     RouterModule.forChild(_router)
   ]
 })

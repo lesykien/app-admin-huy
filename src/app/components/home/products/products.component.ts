@@ -29,6 +29,7 @@ export class ProductsComponent implements OnInit {
       this.isLabel = 'Tất cả';
       this._products.getData().subscribe((response) => {
         this.listProducts = response;
+        console.log(response);
       });
     } else {
       this.isLabel = name;
