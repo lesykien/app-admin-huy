@@ -64,9 +64,14 @@ export class ConfirmationOrdersComponent implements OnInit {
   CancelOrder(id: number) {
     let isCheck = confirm('Bạn có muốn hủy đơn hàng này không');
     if (isCheck) {
-      this._order.update(id, 3).subscribe((response) => {});
-      alert('Hủy đơn hàng thành công');
-      window.location.reload();
+      this._order.update(id, 3).subscribe((response) => {
+        if (response.code == 200) {
+          alert('Hủy đơn hàng thành công');
+          window.location.reload();
+          return;
+        }
+        alert('Hủy đơn thất bại');
+      });
     }
   }
 

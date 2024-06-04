@@ -12,7 +12,7 @@ export class OrderService {
 
   getData(status: number): Observable<orderDTOs[]> {
     return this.http.get<orderDTOs[]>(
-      `${_shared.api}api/OrdersControllers/get-orders-by-type/type/${status}`
+      `${_shared.api}api/Orders/get-orders-by-type/type/${status}`
     );
   }
 
@@ -22,13 +22,13 @@ export class OrderService {
 
   getById(id: number): Observable<order> {
     return this.http.get<order>(
-      `${_shared.api}api/OrdersControllers/get-order-by-id/${id}`
+      `${_shared.api}api/Orders/get-order-by-id/${id}`
     );
   }
 
   update(id: number, status: number) {
-    return this.http.put<string>(
-      `${_shared.api}api/OrdersControllers/update-status-orders/${status}/id/${id}`,
+    return this.http.put<any>(
+      `${_shared.api}api/Orders/update-status-orders/${status}/id/${id}`,
       ''
     );
   }
