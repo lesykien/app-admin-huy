@@ -33,6 +33,9 @@ export class BlogsComponent implements OnInit {
   }
 
   Create() {
+    if (!this.Files) {
+      alert('Bạn chưa thêm hình ảnh');
+    }
     let value = this.FormBlog.value;
     let id = localStorage.getItem('id');
     console.log(value);
